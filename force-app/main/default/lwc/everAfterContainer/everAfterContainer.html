@@ -1,0 +1,51 @@
+<template>
+    <lightning-card>
+        <div if:true={recordsFound} class="container">
+            <table class="slds-table slds-table_cell-buffer slds-no-row-hover" aria-label="EverAfter events">
+                <tbody>
+                    <tr class="slds-hint-parent slds-border_bottom">
+                        <td data-label="Type">
+                            <div class="slds-truncate" title="Type"><b>Type</b></div>
+                        </td>
+                        <td data-label="Event">
+                            <div class="slds-truncate" title="Event"><b>Event</b></div>
+                        </td>
+                        <td data-label="User">
+                            <div class="slds-truncate" title="User"><b>User</b></div>
+                        </td>
+                        <td data-label="When">
+                            <div class="slds-truncate" title="When"><b>When</b></div>
+                        </td>
+                    </tr>
+                    <template for:each={rows} for:item="row">
+                        <tr key={row.key} class="slds-hint-parent slds-border_bottom">
+                            <td data-label="Type">
+                                <div class="slds-truncate">
+                                    <c-svg-container type={row.type}></c-svg-container>
+                                </div>
+                            </td>
+                            <td data-label="Event">
+                                <div class="slds-truncate" title="Event">{row.event}</div>
+                            </td>
+                            <td data-label="User">
+                                <div class="slds-truncate">{row.user}</div>
+                            </td>
+                            <td data-label="When">
+                                <div class="slds-truncate" title={row.when}>{row.when}</div>
+                            </td>  
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <div if:true={isLoading} class="slds-align_absolute-center no-records">
+            Loading in progress...
+        </div>
+        <div if:true={error} class="slds-align_absolute-center no-records">
+            Something went wrong, please, contact your administrator
+        </div>
+        <div if:true={noRecordsFound} class="slds-align_absolute-center no-records">
+            No records found
+        </div>
+    </lightning-card>
+</template>

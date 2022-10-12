@@ -1,0 +1,11 @@
+td {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.container {
+    height: 350px;
+    overflow-y: scroll;
+}
+.no-records {
+    height: 300px;
+}
